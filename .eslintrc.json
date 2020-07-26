@@ -1,0 +1,44 @@
+{
+    "env": {
+      "browser": true,
+      "commonjs": true,
+      "es6": true,
+      "node": true
+    },
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["react", "typescript", "jsx-a11y"],
+    "extends": [
+      "eslint:recommended",
+      "plugin:react/recommended",
+      "plugin:prettier/recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:jsx-a11y/recommended"
+    ],
+    "parserOptions": {
+      "sourceType": "module",
+      "ecmaVersion": 2018,
+      "ecmaFeatures": {
+        "jsx": true,
+        "modules": true
+      }
+    },
+    "settings": {
+      "react": {
+        "version": "detect"
+      }
+    },
+    "rules": {
+      "react/prop-types": "off",
+      "prettier/prettier": "error",
+      "typescript/no-use-before-define": "warn",
+      "typescript/no-unused-vars": 2,
+      "@typescript-eslint/member-delimiter-style": "off",
+      "@typescript-eslint/ban-ts-ignore": "off",
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/explicit-function-return-type": "off",
+      "camelcase": "off",
+      "@typescript-eslint/camelcase": "off",
+      "no-console": 2,
+      "jsx-a11y/anchor-is-valid": "off"
+    }
+  }
