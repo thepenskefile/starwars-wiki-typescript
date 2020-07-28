@@ -11,7 +11,7 @@ function Species() {
   return (
     <ResourceContainer
       resourceFunction={fetchSpecies}
-      name={("species" as unknown) as typeof SWAPI_RESOURCES}
+      name={SWAPI_RESOURCES.SPECIES}
     />
   );
 }

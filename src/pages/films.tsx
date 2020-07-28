@@ -11,7 +11,7 @@ function Films() {
   return (
     <ResourceContainer
       resourceFunction={fetchFilms}
-      name={("films" as unknown) as typeof SWAPI_RESOURCES}
+      name={SWAPI_RESOURCES.FILMS as string}
     />
   );
 }

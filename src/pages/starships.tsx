@@ -11,7 +11,7 @@ function Starships() {
   return (
     <ResourceContainer
       resourceFunction={fetchStarships}
-      name={("starships" as unknown) as typeof SWAPI_RESOURCES}
+      name={SWAPI_RESOURCES.STARSHIPS}
     />
   );
 }

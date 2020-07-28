@@ -11,7 +11,7 @@ function People() {
   return (
     <ResourceContainer
       resourceFunction={fetchPeople}
-      name={("people" as unknown) as typeof SWAPI_RESOURCES}
+      name={SWAPI_RESOURCES.PEOPLE}
     />
   );
 }

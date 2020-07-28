@@ -9,13 +9,13 @@ import {
   Spinner,
   Stack,
   PageContent,
-  Pagination
+  Pagination,
+  styled
 } from "bumbag";
 import _get from "lodash/get";
 import _startCase from "lodash/startCase";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
-import { SWAPI_RESOURCES } from "../constants";
 import { FnArg } from "react-loads/ts/types";
 
 interface Data {
@@ -30,8 +30,13 @@ interface ResourceResponse {
 
 interface Props {
   resourceFunction: FnArg<ResourceResponse>;
-  name: typeof SWAPI_RESOURCES;
+  name: string;
 }
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+`;
 
 function ResourceContainer(props: Props) {
   const { name, resourceFunction } = props;
@@ -68,12 +73,13 @@ function ResourceContainer(props: Props) {
         <Box>
           <Stack>
             {data.map(item => (
-              <Card
-                key={_get(item, "_id")}
-                _hover={{ backgroundColor: "primaryTint" }}
-              >
-                {item._name}
-              </Card>
+              <Box key={_get(item, "_id")}>
+                <StyledLink to={`/${name}/${_get(item, "swapiId")}`}>
+                  <Card _hover={{ backgroundColor: "primaryTint" }}>
+                    {item._name}
+                  </Card>
+                </StyledLink>
+              </Box>
             ))}
           </Stack>
           {_get(meta, "count") > 10 && (

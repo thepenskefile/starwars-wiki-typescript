@@ -11,7 +11,7 @@ function Vehicles() {
   return (
     <ResourceContainer
       resourceFunction={fetchVehicles}
-      name={("vehicles" as unknown) as typeof SWAPI_RESOURCES}
+      name={SWAPI_RESOURCES.VEHICLES}
     />
   );
 }

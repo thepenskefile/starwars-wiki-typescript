@@ -6,7 +6,7 @@ interface ResourceParams {
 }
 
 interface SingleResourceParams {
-  id: number;
+  id: string;
   params?: Record<string, any>;
 }
 
@@ -20,7 +20,8 @@ const parseSwapiResponse = ({ response, id, name }) => {
   const formattedData = _get(response, "data.results", []).map(result => ({
     ...result,
     _id: _get(result, id),
-    _name: _get(result, name)
+    _name: _get(result, name),
+    swapiId: _get(result, "url").replace(/^\D+/g, "")
   }));
 
   return {
@@ -58,11 +59,7 @@ const swapi = {
   },
   async film({ id, params }: SingleResourceParams) {
     const response = await this.axios.get(`/films/${id}`, { params });
-    return parseSwapiResponse({
-      response,
-      name: "title",
-      id: "episode_id"
-    });
+    return response.data || {};
   },
   async films({ params }: ResourceParams) {
     const response = await this.axios.get(`/films`, { params });
@@ -74,11 +71,7 @@ const swapi = {
   },
   async starship({ id, params }: SingleResourceParams) {
     const response = await this.axios.get(`/starships/${id}`, { params });
-    return parseSwapiResponse({
-      response,
-      name: "name",
-      id: "model"
-    });
+    return response.data || {};
   },
   async starships({ params }: ResourceParams) {
     const response = await this.axios.get(`/starships/`, { params });
@@ -90,11 +83,7 @@ const swapi = {
   },
   async vehicle({ id, params }: SingleResourceParams) {
     const response = await this.axios.get(`/vehicles/${id}`, { params });
-    return parseSwapiResponse({
-      response,
-      name: "name",
-      id: "model"
-    });
+    return response.data || {};
   },
   async vehicles({ params }: ResourceParams) {
     const response = await this.axios.get(`/vehicles`, { params });
@@ -106,11 +95,7 @@ const swapi = {
   },
   async singleSpecies({ id, params }: SingleResourceParams) {
     const response = await this.axios.get(`/species/${id}`, { params });
-    return parseSwapiResponse({
-      response,
-      name: "name",
-      id: "name"
-    });
+    return response.data || {};
   },
   async species({ params }: ResourceParams) {
     const response = await this.axios.get(`/species`, { params });
@@ -122,11 +107,7 @@ const swapi = {
   },
   async planet({ id, params }: SingleResourceParams) {
     const response = await this.axios.get(`/planets/${id}`, { params });
-    return parseSwapiResponse({
-      response,
-      name: "name",
-      id: "name"
-    });
+    return response.data || {};
   },
   async planets({ params }: ResourceParams) {
     const response = await this.axios.get(`/planets`, { params });

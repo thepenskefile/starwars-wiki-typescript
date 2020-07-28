@@ -11,7 +11,7 @@ function Planets() {
   return (
     <ResourceContainer
       resourceFunction={fetchPlanets}
-      name={("planets" as unknown) as typeof SWAPI_RESOURCES}
+      name={SWAPI_RESOURCES.PLANETS}
     />
   );
 }
