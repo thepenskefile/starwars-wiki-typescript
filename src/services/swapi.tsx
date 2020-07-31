@@ -41,12 +41,7 @@ const swapi = {
     const response = await this.axios.get(`/people/${id}`, {
       params
     });
-
-    return parseSwapiResponse({
-      response,
-      name: "name",
-      id: "name"
-    });
+    return response.data || {};
   },
   async people({ params }: ResourceParams) {
     const response = await this.axios.get(`/people`, { params });

@@ -60,7 +60,7 @@ function ResourceDetailsContainer(props: Props) {
       {resourceLoader.isResolved && (
         <Box>
           <Heading use="h3">{_get(data, titleKey)}</Heading>
-          <Stack>
+          <Stack spacing="major-1">
             {detailsKeys.map(key => (
               <Box key={key}>
                 <Text fontWeight="semibold">{formatKey(key)}</Text>:{" "}

@@ -14,14 +14,14 @@ const DETAILS_KEYS = [
 ];
 
 function FilmDetailsContainer() {
-  function fetchFilms(id: string, params: Record<string, any> = {}) {
+  function fetchFilm(id: string, params: Record<string, any> = {}) {
     return swapi.film({ id, params });
   }
 
   return (
     <ResourceDetailsContainer
       resource={SWAPI_RESOURCES.FILMS}
-      resourceFunction={fetchFilms}
+      resourceFunction={fetchFilm}
       detailsKeys={DETAILS_KEYS}
       titleKey={TITLE_KEY}
     />

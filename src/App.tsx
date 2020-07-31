@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  useRouteMatch
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Header from "components/Header";
 import LoadingPage from "components/LoadingPage";
@@ -15,24 +10,24 @@ const Starships = React.lazy(() => import("./pages/starships"));
 const Vehicles = React.lazy(() => import("./pages/vehicles"));
 const Species = React.lazy(() => import("./pages/species"));
 const Planets = React.lazy(() => import("./pages/planets"));
-const ResourceDetails = React.lazy(() =>
-  import("./containers/ResourceDetailsContainer")
-);
 const FilmDetails = React.lazy(() =>
   import("./containers/FilmDetailsContainer")
 );
-
-// function detailsRoute() {
-//   const { path, url } = useRouteMatch();
-//   return (
-//     <Switch>
-//       <Route path={`${path}/:topicId`}>
-//         <Topic />
-//       </Route>
-//     </Switch>
-//   );
-// }
-
+const PersonDetails = React.lazy(() =>
+  import("./containers/PersonDetailsContainer")
+);
+const PlanetDetails = React.lazy(() =>
+  import("./containers/PlanetDetailsContainer")
+);
+const SpeciesDetails = React.lazy(() =>
+  import("./containers/SpeciesDetailsContainer")
+);
+const StarshipDetails = React.lazy(() =>
+  import("./containers/StarshipDetailsContainer")
+);
+const VehicleDetails = React.lazy(() =>
+  import("./containers/VehicleDetailsContainer")
+);
 function App() {
   return (
     <React.Suspense fallback={<LoadingPage />}>
@@ -43,10 +38,15 @@ function App() {
           <Route path="/films" exact component={Films} />
           <Route path="/films/:id" component={FilmDetails} />
           <Route path="/people" exact component={People} />
+          <Route path="/people/:id" component={PersonDetails} />
           <Route path="/starships" exact component={Starships} />
+          <Route path="/starships/:id" component={StarshipDetails} />
           <Route path="/vehicles" exact component={Vehicles} />
+          <Route path="/vehicles/:id" component={VehicleDetails} />
           <Route path="/species" exact component={Species} />
+          <Route path="/species/:id" component={SpeciesDetails} />
           <Route path="/planets" exact component={Planets} />
+          <Route path="/planets/:id" component={PlanetDetails} />
         </Switch>
       </Router>
     </React.Suspense>
